@@ -1,0 +1,1 @@
+json.extract! @event, :app_id, :user_id, :name, :created_at
