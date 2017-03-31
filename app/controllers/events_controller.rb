@@ -1,12 +1,7 @@
 class EventsController < ApplicationController
   def create
-    @event = Event.new(app_id: app_id, user_id: user_id, name: name)
-
-    if @event.save
-      render json: @event.to_json(only: :id)
-    else
-      render json: ['Missing parameter'], status: 500
-    end
+    @event = Event.create(app_id: app_id, user_id: user_id, name: name)
+    render json: @event.to_json(only: :id)
   end
 
   def show
