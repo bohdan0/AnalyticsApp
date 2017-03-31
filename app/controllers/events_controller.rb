@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   def create
+    App.find_by_app_id(app_id) || App.create(app_id: app_id)
+    User.find_by_user_id(user_id) || User.create(user_id: user_id)
     @event = Event.new(app_id: app_id, user_id: user_id, name: name)
 
     if @event.save
