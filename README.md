@@ -2,7 +2,7 @@
 
 ### This is backend web service that handles analytics for applications. It uses HTTP API with next endpoints:
 
-- `/event` endpoint allows clients to send 2 integers of information - `app_id` and `user_id` - as well as a string - `name`. Each incoming message is being processed by giving the event a unique identifier and then stored into database. The API responds with the generated unique identifier `id`.
+- `/event` endpoint allows clients to send 2 integers of information - `app_id` and `user_id` - as well as a string - `name`. Each incoming message is being processed by giving the event a unique identifier and stored into database. The API responds with the generated unique identifier `id`.
 
 - `/events/:id` endpoint shows data (`app_id` ,`user_id`, `name`) associated with an event of that identifier if it has been processed.
 
@@ -15,4 +15,4 @@
 - run `bundle install`
 - run `bundle exec rake db:setup`
 - run `rails s`
-- go to `localhost:3000` and then navigate no right endpoint
+- go to `localhost:3000` and then navigate to right endpoint
