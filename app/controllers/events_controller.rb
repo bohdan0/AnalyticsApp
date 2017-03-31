@@ -1,11 +1,9 @@
 class EventsController < ApplicationController
   def create
-    App.find_by_app_id(app_id) || App.create(app_id: app_id)
-    User.find_by_user_id(user_id) || User.create(user_id: user_id)
     @event = Event.new(app_id: app_id, user_id: user_id, name: name)
 
     if @event.save
-      render :create
+      render json: @event.to_json(only: :id)
     else
       render json: ['Missing parameter'], status: 500
     end
@@ -15,7 +13,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event
-      render :show
+      render json: @event.to_json(only: [:app_id, :user_id, :name, :created_at])
     else
       render json: ['Not found'], status: 404
     end
